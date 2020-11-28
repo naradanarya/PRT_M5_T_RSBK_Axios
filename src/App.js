@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import axios from 'axios';
+import ImageList from './imageList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { images: [] };
+
+  getPhotos = async () => {
+    const response = await axios.get("https://api.unsplash.com/photos", {
+      headers: {
+        Authorization: "Client-ID ENY3nA-GcEo3stBCPR5LGqSxwadLFLJCq74v1KMLOkQ"
+      }
+    });
+
+    this.setState({ images: response.data});
+  }
+
+  render() {
+    return(
+      <div>
+        <input 
+          type="button" 
+          value='get photos'
+          onClick={this.getPhotos}
+        />
+        <ImageList  images={this.state.images} />
+      </div>
+    );
+  }
 }
 
 export default App;
