@@ -1,3 +1,8 @@
+# Tugas Modul 5 Kel 31 Shift 2  
+Arya Naradana (21120117140024)  
+Heidi Amellie Ayu Astria (21120117120022)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
