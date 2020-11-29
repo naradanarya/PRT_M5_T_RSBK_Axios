@@ -1,21 +1,20 @@
 import React from "react";
+import "../test.css";
 
 const Item = ({ movie }) => {
   return (
     <li>
-      <p>{movie.title}</p>
-      <div>
-        // 画像無い場合はNoImageと表示（画像用意するの面倒だった）
+      <h1>{movie.title}</h1>
+
+      <div className="card">
         {movie.image_url ? (
-          <img
-            className=""
-            src={movie.image_url}
-            alt=""
-          />
+          <img className="" src={movie.image_url} alt="" />
         ) : (
           <p>NoImage</p>
         )}
-        <p>{movie.overview}</p>
+
+        <p>Score: {movie.score}</p>
+        <a href={movie.url}>{movie.url}</a>
       </div>
     </li>
   );

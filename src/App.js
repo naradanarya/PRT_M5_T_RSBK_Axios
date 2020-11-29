@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import List from "./components/list";
 
 const App = () => {
-  const [searchWord, setSearchWord] = useState("");
+  const [searchWord, setSearchWord] = useState("naruto");
   // const [currentValue, setCurrentValue] = useState(initialValue)
   // currentValue     : 使用する変数の名前
   // setCurrentValue  : 使用する関数の名前
@@ -22,7 +22,6 @@ const App = () => {
         //値が変わるたびにhandleChangeを動かす
         onChange={handleChange}
       />
-      //MovieListにsetSearchWordで保持したsearchWordを渡す
       <List word={searchWord} />
     </div>
   );

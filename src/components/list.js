@@ -7,8 +7,7 @@ const List = ({ word }) => {
 
   return (
     <div>
-      <ul>
-         // movieListに配列が返ってきているのでmap処理 
+      <ul> 
         {movieList.map(movie => (
           <Item movie={movie} key={movie.id} />
         ))}
