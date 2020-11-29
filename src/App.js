@@ -1,75 +1,31 @@
-import React, { Fragment, useState, useEffect, } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import List from "./components/list";
 
- const useDataApi = (initialUrl, initialData) => {
-  const [data, setData] = useState(initialData);
-  const [url, setUrl] = useState(initialUrl);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+const App = () => {
+  const [searchWord, setSearchWord] = useState("");
+  // const [currentValue, setCurrentValue] = useState(initialValue)
+  // currentValue     : 使用する変数の名前
+  // setCurrentValue  : 使用する関数の名前
+  // useState         : Reactのメソッド
+  // initialValue     : stateにいれる最初の値
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-
-      try {
-        const result = await axios(url);
-
-        setData(result.data);
-      } catch (error) {
-        setIsError(true);
-      }
-
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, [url]);
-
-  return [{ data, isLoading, isError }, setUrl];
-};
-
-function App() {
-  const [query, setQuery] = useState('react');
-  const [{ data, isLoading, isError }, doFetch] = useDataApi(
-    'http://hn.algolia.com/api/v1/search?query=react',
-    { hits: [] },
-  );
+  // 入力された値をstate保持させる関数
+  const handleChange = e => {
+    setSearchWord(e.target.value);
+  };
 
   return (
-    <Fragment>
-      <form
-        onSubmit={event => {
-          doFetch(
-            `http://hn.algolia.com/api/v1/search?query=${query}`,
-          );
-
-          event.preventDefault();
-        }}
-      >
-        <input
-          type="text"
-          value={query}
-          onChange={event => setQuery(event.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form>
-
-      {isError && <div>Something went wrong ...</div>}
-
-      {isLoading ? (
-        <div>Loading ...</div>
-      ) : (
-        <ul>
-          {data.hits.map(item => (
-            <li key={item.objectID}>
-              <a href={item.url}>{item.title}</a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Fragment>
+    <div>
+      <input
+        type="text"
+        placeholder="SearchWord"
+        //値が変わるたびにhandleChangeを動かす
+        onChange={handleChange}
+      />
+      //MovieListにsetSearchWordで保持したsearchWordを渡す
+      <List word={searchWord} />
+    </div>
   );
-}
+};
 
 export default App;
