@@ -1,9 +1,14 @@
+@import '~antd/dist/antd.css';
+.main {
+  margin-left: 0px;
+  padding: 0px 10px;
+}
+
 .column {
     float: center;
     width: 25%;
     padding: 0 10px;
   }
-  
   .row {margin: 0 -5px;}
   .row:after {
     content: "";
@@ -16,12 +21,6 @@
       display: block;
       margin-bottom: 20px;
     }
-  }
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    text-align: center;
-    background-color: #ffdac2;
   }
   h1 {
     font-size: 20px;

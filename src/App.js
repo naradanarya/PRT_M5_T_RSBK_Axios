@@ -1,22 +1,21 @@
-import React, { useState } from "react";
-import List from "./components/list";
-
-const App = () => {
-  const [searchWord, setSearchWord] = useState("naruto");
-  const handleChange = e => {
-    setSearchWord(e.target.value);
-  };
-
+import React from "react";
+import Navbar from './components/navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from "./pages/home";
+import About from "./pages/about"
+function App() {
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="SearchWord"
-        onChange={handleChange}
-      />
-      <List word={searchWord} />
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/about' component={About} />
+          <Route path='/products' component={"Products"} />
+        </Switch>
+      </Router>
+    </>
   );
-};
+}
 
 export default App;
