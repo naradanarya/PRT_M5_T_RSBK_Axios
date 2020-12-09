@@ -67,6 +67,7 @@ function App() {
               <div className="column">
                 <div className="card">
                   <h1>{item.title}</h1>
+                  {movie.image_url ? <img className="" alt="" /> : <p>NoImage</p>}
                   <img src={item.image_url} />
                 </div>
               </div>
