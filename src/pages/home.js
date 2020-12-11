@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import List from "../components/list";
 import "../style/test.css";
+import { Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 const Home = () => {
   const [searchWord, setSearchWord] = useState("naruto");
@@ -11,7 +13,12 @@ const Home = () => {
   return (
     <div>
       <div className="main">
-        <input type="text" placeholder="SearchWord" onChange={handleChange} />
+        <Input
+          prefix={<SearchOutlined />}
+          size="large"
+          placeholder="SearchWord"
+          onChange={handleChange}
+        />
         <List word={searchWord} />
       </div>
     </div>

@@ -8,8 +8,8 @@ const List = ({ word }) => {
 
   return (
     <div>
-      <Row gutter={[16, 16]}>
-        {movieList.map(movie => (<Col span={6}>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+        {movieList.map(movie => (<Col className="gutter-row" span={6}>
           <Item movie={movie} key={movie.id} /></Col>
         ))}
       </Row>

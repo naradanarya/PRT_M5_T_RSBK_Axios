@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Image } from "antd";
 
+
 const Item = ({ movie }) => {
   return (
     <Card
@@ -10,7 +11,7 @@ const Item = ({ movie }) => {
       bordered={false}
     >
       {movie.image_url ? (
-        <Image width={300}  src={movie.image_url} alt="" />
+        <Image width={300} src={movie.image_url} alt="image data" />
       ) : (
         <p>NoImage</p>
       )}
