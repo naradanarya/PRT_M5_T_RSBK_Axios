@@ -1,24 +1,25 @@
 import React from "react";
-import Navbar from './components/navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from "./pages/home";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import About from "./pages/about";
 import Hp from "./pages/hp";
+import PrivateRoute from "./pages/PrivateRouter";
+import { AuthProvider } from "./auth/Auth";
+import Home from "./pages/home";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import { isMobile } from 'react-device-detect';
 
-function App() {
+export default function App() {
   return (
-    <>
+    <AuthProvider>
       <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component={isMobile ? Hp:Home} />
-          <Route path='/about' component={About} />
-          <Route path='/products' component={About} />
-        </Switch>
+        <div>
+          <PrivateRoute exact path="/" component={isMobile ? Hp:Home} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/about" component={About} />
+        </div>
       </Router>
-    </>
+    </AuthProvider>
   );
-}
-
-export default App;
+};
